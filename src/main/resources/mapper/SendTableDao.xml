@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oa.oa.dao.SendTableDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.oa.oa.bean.SendTable">
+        <result column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="send_number" property="sendNumber"/>
+        <result column="secret_level" property="secretLevel"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `title`,
+        `content`,
+        `send_number`,
+        `secret_level`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO send_table (
+            `id`,
+            `title`,
+            `content`,
+            `send_number`,
+            `secret_level`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.title},
+            #{pojo.content},
+            #{pojo.sendNumber},
+            #{pojo.secretLevel}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO send_table
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.title!=null"> `title`,</if>
+            <if test="pojo.content!=null"> `content`,</if>
+            <if test="pojo.sendNumber!=null"> `send_number`,</if>
+            <if test="pojo.secretLevel!=null"> `secret_level`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.title!=null">#{pojo.title},</if>
+            <if test="pojo.content!=null">#{pojo.content},</if>
+            <if test="pojo.sendNumber!=null">#{pojo.sendNumber},</if>
+            <if test="pojo.secretLevel!=null">#{pojo.secretLevel},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO send_table (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.title},
+            #{pojo.content},
+            #{pojo.sendNumber},
+            #{pojo.secretLevel}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE send_table
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.title != null"> `title` = #{pojo.title}, </if>
+            <if test="pojo.content != null"> `content` = #{pojo.content}, </if>
+            <if test="pojo.sendNumber != null"> `send_number` = #{pojo.sendNumber}, </if>
+            <if test="pojo.secretLevel != null"> `secret_level` = #{pojo.secretLevel} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="getAll" resultType="com.oa.oa.bean.SendTable">
+        select * from sendtable
+    </select>
+</mapper>
+
